@@ -56,3 +56,6 @@ docker-compose --env-file .env up -d
 docker-compose down 
 docker-compose --env-file .env up -d
 ```
+
+### Não esqueçam de cirar o arquivo .env com as informações 
+*neste caso as informações do banco de dados*
