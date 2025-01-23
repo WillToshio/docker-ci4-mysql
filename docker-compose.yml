@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/app/Dockerfile  # Usar o Dockerfile modificado
+    container_name: app_container
+    ports:
+      - "80:80" # Porta para acessar a aplicação
+    volumes:
+      - ./src:/app  # Sincronizar o código-fonte local com o container- 
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - BITNAMI_DEBUG=true
+    depends_on:
+      - db  # Esperar pelo banco de dados antes de iniciar o app
+
+
+  db:
+    image: mysql:8.0
+    container_name: mysql_container
+    restart: always
+    ports:
+      - "3306:3306" # Porta para acesso ao banco de dados
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
+    driver: local
+

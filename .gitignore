@@ -1,0 +1,4 @@
+# ignore all .env
+.env
+
+docker/db/.Dockerfile
