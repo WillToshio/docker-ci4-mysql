@@ -29,7 +29,7 @@ my-docker-project/
 ### Este projeto é próprio para o mysql
 
 
-# *não há o que fazer não esqueça de rodar na linha de comando*
+<!-- # *não há o que fazer não esqueça de rodar na linha de comando*
 ```
     docker exec -it app_container bash
 ```
@@ -43,14 +43,16 @@ chown -R www-data:www-data writable
 chmod -R 775 writable
 
 ```
+-->
 
-
-### para rodar o projeto insira no terminal 
+### Para rodar o projeto abra um terminal no diretório e digite o comando a baixo 
 ```
-
 docker-compose build
 docker-compose --env-file .env up -d
+```
 
-
-
+### Após alguma modificação apenas rodar o comando
+```
+docker-compose down 
+docker-compose --env-file .env up -d
 ```
